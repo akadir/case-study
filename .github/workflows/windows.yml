@@ -1,0 +1,30 @@
+name: build on windows
+on:
+  push:
+    branches:
+      - '**'
+    paths:
+      - 'src/**'
+      - 'pom.xml'
+      - '.github/**'
+    tags-ignore:
+      - '**'
+
+jobs:
+  matrix-build:
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        java: [ 8, 11, 14 ]
+    name: Build with Java ${{ matrix.java }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup java
+        uses: actions/setup-java@v1
+        with:
+          java-version: ${{ matrix.java }}
+      - name: Build with Maven
+        run: mvn -DskipTests package
+      - name: Test
+        run: mvn test
