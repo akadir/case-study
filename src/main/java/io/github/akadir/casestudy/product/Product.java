@@ -1,4 +1,4 @@
-package io.github.akadir.casestudy.model;
+package io.github.akadir.casestudy.product;
 
 public class Product {
     private String title;
