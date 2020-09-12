@@ -35,6 +35,30 @@
     <img src="https://github.com/akadir/github-actions/workflows/build%20on%20windows/badge.svg"
       alt="build on windows" />
   </a>
+  
+  <!-- Quality Gate Status -->
+  <a href="https://sonarcloud.io/dashboard?id=akadir_case-study">
+    <img src="https://sonarcloud.io/api/project_badges/measure?project=akadir_case-study&metric=alert_status"
+      alt="Quality Gate Status" />
+  </a>
+  
+  <!-- Code Coverage -->
+  <a href="https://sonarcloud.io/component_measures?id=akadir_case-study&metric=coverage&view=list">
+    <img src="https://sonarcloud.io/api/project_badges/measure?project=akadir_case-study&metric=coverage"
+      alt="Code Coverage" />
+  </a>
+  
+  <!-- Technical Dept -->
+  <a href="https://sonarcloud.io/component_measures?id=akadir_case-study&metric=sqale_index&view=list">
+    <img src="https://sonarcloud.io/api/project_badges/measure?project=akadir_case-study&metric=sqale_index"
+      alt="Technical Dept" />
+  </a>
+  
+  <!-- Code Smell -->
+  <a href="https://sonarcloud.io/project/issues?id=akadir_case-study&resolved=false&types=CODE_SMELL">
+    <img src="https://sonarcloud.io/api/project_badges/measure?project=akadir_case-study&metric=code_smells"
+      alt="Technical Dept" />
+  </a>
 </div>
 
 ## Built with the Help of
