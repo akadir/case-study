@@ -4,6 +4,7 @@ import io.github.akadir.casestudy.discount.campaign.base.Campaign;
 import io.github.akadir.casestudy.discount.coupon.base.Coupon;
 import io.github.akadir.casestudy.product.model.Product;
 import io.github.akadir.casestudy.shopping.service.ShoppingCartService;
+import io.github.akadir.casestudy.shopping.service.model.ShoppingCart;
 import io.github.akadir.casestudy.shopping.validator.CartEventValidator;
 import io.github.akadir.casestudy.shopping.validator.impl.AmountValidator;
 import io.github.akadir.casestudy.shopping.validator.impl.ProductValidator;
@@ -11,20 +12,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Map;
 
 public class ConcreteShoppingCartServiceImpl implements ShoppingCartService {
     private final Logger log = LoggerFactory.getLogger(ConcreteShoppingCartServiceImpl.class);
 
-    private final Map<Product, Integer> products;
+    private final ShoppingCart shoppingCart;
     private final CartEventValidator validator;
-    private Coupon appliedCoupon;
-    private Campaign appliedCampaign;
-    private double discount;
 
     public ConcreteShoppingCartServiceImpl() {
-        this.products = new HashMap<>();
+        this.shoppingCart = new ShoppingCart();
         this.validator = new ProductValidator();
         validator.linkWith(new AmountValidator());
     }
@@ -37,8 +34,8 @@ public class ConcreteShoppingCartServiceImpl implements ShoppingCartService {
     @Override
     public void addProduct(Product product, int amount) {
         if (validator.check(product, amount)) {
-            int alreadyAdded = products.getOrDefault(product, 0);
-            products.put(product, alreadyAdded + amount);
+            int alreadyAdded = shoppingCart.getProducts().getOrDefault(product, 0);
+            shoppingCart.getProducts().put(product, alreadyAdded + amount);
             log.info("{} added to cart. New amount: {}", product.getTitle(), alreadyAdded + amount);
         } else {
             log.warn("{} with amount: {} could not be added to chart", product.getTitle(), amount);
@@ -47,18 +44,18 @@ public class ConcreteShoppingCartServiceImpl implements ShoppingCartService {
 
     @Override
     public void removeProduct(Product product) {
-        removeProduct(product, products.get(product));
+        removeProduct(product, shoppingCart.getProducts().get(product));
     }
 
     @Override
     public void removeProduct(Product product, int amount) {
         if (validator.check(product, amount)) {
-            int alreadyAdded = products.get(product);
+            int alreadyAdded = shoppingCart.getProducts().get(product);
             if (alreadyAdded <= amount) {
-                products.remove(product);
+                shoppingCart.getProducts().remove(product);
                 log.info("{} removed from cart", product.getTitle());
             } else {
-                products.put(product, alreadyAdded - amount);
+                shoppingCart.getProducts().put(product, alreadyAdded - amount);
                 log.info("{} {} removed from cart. new amount is: {}", amount, product.getTitle(), alreadyAdded - amount);
             }
 
@@ -71,33 +68,39 @@ public class ConcreteShoppingCartServiceImpl implements ShoppingCartService {
     private void checkDiscounts() {
         double newDiscount = 0;
 
+        Campaign appliedCampaign = shoppingCart.getAppliedCampaign();
+
         if (appliedCampaign != null) {
-            double campaignDiscount = appliedCampaign.calculateDiscount(products);
+            double campaignDiscount = appliedCampaign.calculateDiscount(shoppingCart.getProducts());
 
             if (campaignDiscount == 0) {
-                this.appliedCampaign = null;
+                shoppingCart.setAppliedCampaign(null);
                 log.info("Campaign removed from cart");
             }
 
             newDiscount += campaignDiscount;
         }
 
+        Coupon appliedCoupon = shoppingCart.getAppliedCoupon();
+
         if (appliedCoupon != null) {
-            double couponDiscount = appliedCoupon.calculateDiscount(products);
+            double couponDiscount = appliedCoupon.calculateDiscount(shoppingCart.getProducts());
 
             if (couponDiscount == 0) {
-                this.appliedCoupon = null;
+                shoppingCart.setAppliedCoupon(null);
                 log.info("Coupon removed from cart");
             }
 
             newDiscount += couponDiscount;
         }
 
-        this.discount = newDiscount;
+        shoppingCart.setDiscount(newDiscount);
     }
 
     @Override
     public boolean applyCoupon(Coupon coupon) {
+        Coupon appliedCoupon = shoppingCart.getAppliedCoupon();
+
         if (appliedCoupon != null) {
             log.warn("You have already applied another coupon");
             return false;
@@ -113,13 +116,13 @@ public class ConcreteShoppingCartServiceImpl implements ShoppingCartService {
 
             double cartPrice = getCartPrice();
 
-            if (cartPrice < couponDiscount + this.discount) {
+            if (cartPrice < couponDiscount + shoppingCart.getDiscount()) {
                 log.warn("Discounts exceeded cart price. Add more products into your cart to use this coupon");
                 return false;
             }
 
-            this.discount += couponDiscount;
-            this.appliedCoupon = coupon;
+            shoppingCart.setDiscount(shoppingCart.getDiscount() + couponDiscount);
+            shoppingCart.setAppliedCoupon(coupon);
             return true;
         }
 
@@ -128,6 +131,8 @@ public class ConcreteShoppingCartServiceImpl implements ShoppingCartService {
 
     @Override
     public boolean applyCampaign(Campaign campaign) {
+        Campaign appliedCampaign = shoppingCart.getAppliedCampaign();
+
         if (appliedCampaign != null) {
             log.warn("You have already applied another campaign");
             return false;
@@ -143,13 +148,14 @@ public class ConcreteShoppingCartServiceImpl implements ShoppingCartService {
 
             double cartPrice = getCartPrice();
 
-            if (cartPrice < campaignDiscount + this.discount) {
+            if (cartPrice < campaignDiscount + shoppingCart.getDiscount()) {
                 log.warn("Discounts exceeded cart price. Add more products into your cart to use this campaign");
                 return false;
             }
 
-            this.discount += campaignDiscount;
-            this.appliedCampaign = campaign;
+
+            shoppingCart.setDiscount(shoppingCart.getDiscount() + campaignDiscount);
+            shoppingCart.setAppliedCampaign(campaign);
 
             return true;
         }
@@ -159,16 +165,15 @@ public class ConcreteShoppingCartServiceImpl implements ShoppingCartService {
 
     @Override
     public double getCartPrice() {
-        return products.entrySet().stream()
-                .mapToDouble(e -> e.getKey().getPrice() * e.getValue()).sum();
+        return shoppingCart.getCartPrice();
     }
 
     @Override
     public double getDiscounts() {
-        return discount;
+        return shoppingCart.getDiscount();
     }
 
     public Map<Product, Integer> getProducts() {
-        return Collections.unmodifiableMap(products);
+        return Collections.unmodifiableMap(shoppingCart.getProducts());
     }
 }
