@@ -39,5 +39,8 @@
 
 ## Built with the Help of
 
-* [maven](https://maven.apache.org/) - Build automation and dependency management tool.
-* [gitignore.io](https://gitignore.io/) - Utility website to generate .gitignore files
+ *  [maven](https://maven.apache.org/) - Build automation and dependency management tool.
+ *  [logback](http://logback.qos.ch/) - Logging library that implements SLF4J API
+ *  [mockito](https://site.mockito.org/) - Testing framework to mock objects.
+ *  [AssertJ](https://joel-costigliola.github.io/assertj/) - Rich and easy to use test assertion library
+ *  [gitignore.io](https://gitignore.io/) - Utility website to generate .gitignore files
