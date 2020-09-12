@@ -1,6 +1,6 @@
 package io.github.akadir.casestudy.shopping.service.impl;
 
-import io.github.akadir.casestudy.product.Product;
+import io.github.akadir.casestudy.product.model.Product;
 import io.github.akadir.casestudy.shopping.validator.CartEventValidator;
 import io.github.akadir.casestudy.shopping.validator.impl.AmountValidator;
 import io.github.akadir.casestudy.shopping.validator.impl.ProductValidator;
@@ -34,7 +34,7 @@ public class ConcreteShoppingCartServiceImpl implements ShoppingCartService {
         if (validator.check(product, amount)) {
             int alreadyAdded = products.getOrDefault(product, 0);
             products.put(product, alreadyAdded + amount);
-            log.info("{} added to chart. New amount: {}", product.getTitle(), alreadyAdded + amount);
+            log.info("{} added to cart. New amount: {}", product.getTitle(), alreadyAdded + amount);
         } else {
             log.warn("{} with amount: {} could not be added to chart", product.getTitle(), amount);
         }

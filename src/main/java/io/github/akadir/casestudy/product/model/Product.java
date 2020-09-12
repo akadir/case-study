@@ -1,4 +1,4 @@
-package io.github.akadir.casestudy.product;
+package io.github.akadir.casestudy.product.model;
 
 import java.util.Objects;
 

@@ -1,7 +1,7 @@
 package io.github.akadir.casestudy.shopping.service;
 
-import io.github.akadir.casestudy.product.Category;
-import io.github.akadir.casestudy.product.Product;
+import io.github.akadir.casestudy.product.model.Category;
+import io.github.akadir.casestudy.product.model.Product;
 import io.github.akadir.casestudy.shopping.service.impl.ConcreteShoppingCartServiceImpl;
 import org.junit.Test;
 
@@ -126,6 +126,22 @@ public class ConcreteShoppingCartServiceTest {
         assertThat(shoppingCart.getProducts())
                 .as("Shopping cart product amount should be 11")
                 .containsEntry(product, 11);
+    }
+
+    @Test
+    public void whenRemoveProductCalledWithProductFromCartThenExpectProductRemovedFromCart() {
+        ShoppingCartService shoppingCart = new ConcreteShoppingCartServiceImpl();
+
+        Category category = new Category("foo");
+        Product product = new Product("bar", 1, category);
+
+        shoppingCart.addProduct(product, 11);
+
+        shoppingCart.removeProduct(product);
+
+        assertThat(shoppingCart.getProducts())
+                .as("Shopping cart products should be empty")
+                .isEmpty();
     }
 
     @Test

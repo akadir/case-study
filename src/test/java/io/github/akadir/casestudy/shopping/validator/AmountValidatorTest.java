@@ -1,7 +1,7 @@
 package io.github.akadir.casestudy.shopping.validator;
 
-import io.github.akadir.casestudy.product.Category;
-import io.github.akadir.casestudy.product.Product;
+import io.github.akadir.casestudy.product.model.Category;
+import io.github.akadir.casestudy.product.model.Product;
 import io.github.akadir.casestudy.shopping.validator.impl.AmountValidator;
 import org.junit.Test;
 import org.mockito.Mockito;

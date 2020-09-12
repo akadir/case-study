@@ -1,6 +1,6 @@
 package io.github.akadir.casestudy.shopping.service;
 
-import io.github.akadir.casestudy.product.Product;
+import io.github.akadir.casestudy.product.model.Product;
 
 import java.util.Map;
 

@@ -1,5 +1,6 @@
 package io.github.akadir.casestudy.product;
 
+import io.github.akadir.casestudy.product.model.Category;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

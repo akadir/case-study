@@ -1,6 +1,6 @@
 package io.github.akadir.casestudy.shopping.validator;
 
-import io.github.akadir.casestudy.product.Product;
+import io.github.akadir.casestudy.product.model.Product;
 
 public abstract class CartEventValidator {
     private CartEventValidator next;

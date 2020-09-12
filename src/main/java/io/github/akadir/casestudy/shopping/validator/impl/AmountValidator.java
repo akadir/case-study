@@ -1,6 +1,6 @@
 package io.github.akadir.casestudy.shopping.validator.impl;
 
-import io.github.akadir.casestudy.product.Product;
+import io.github.akadir.casestudy.product.model.Product;
 import io.github.akadir.casestudy.shopping.validator.CartEventValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
