@@ -1,5 +1,7 @@
 package io.github.akadir.casestudy.product;
 
+import java.util.Objects;
+
 public class Category {
     private String title;
     private Category parentCategory;
@@ -27,5 +29,19 @@ public class Category {
 
     public void setParentCategory(Category parentCategory) {
         this.parentCategory = parentCategory;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Category category = (Category) o;
+        return title.equals(category.title) &&
+                Objects.equals(parentCategory, category.parentCategory);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, parentCategory);
     }
 }

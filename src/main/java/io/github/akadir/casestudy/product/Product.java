@@ -1,5 +1,7 @@
 package io.github.akadir.casestudy.product;
 
+import java.util.Objects;
+
 public class Product {
     private String title;
     private double price;
@@ -33,5 +35,20 @@ public class Product {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return Double.compare(product.price, price) == 0 &&
+                title.equals(product.title) &&
+                Objects.equals(category, product.category);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, price, category);
     }
 }
