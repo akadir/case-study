@@ -57,6 +57,8 @@ public class ConcreteCouponTest {
         Category electronic = new Category("electronic");
         Product watch = new Product("watch", 100, electronic);
 
+        shoppingCartService.addProduct(watch);
+
         assertThat(coupon.isCouponApplicable(shoppingCartService.getProducts()))
                 .isFalse();
 
