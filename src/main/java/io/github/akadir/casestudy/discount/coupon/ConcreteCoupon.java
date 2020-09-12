@@ -7,7 +7,7 @@ import io.github.akadir.casestudy.product.model.Product;
 import java.util.Map;
 
 public class ConcreteCoupon extends Coupon {
-    protected ConcreteCoupon(Double minimumCartAmount, DiscountType discountType, double discountAmount) {
+    public ConcreteCoupon(double minimumCartAmount, DiscountType discountType, double discountAmount) {
         super(minimumCartAmount, discountType, discountAmount);
     }
 

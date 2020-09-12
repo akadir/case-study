@@ -10,11 +10,11 @@ import java.util.Map;
 public abstract class Coupon {
     protected final Logger log = LoggerFactory.getLogger(this.getClass());
 
-    protected final Double minimumCartAmount;
+    protected final double minimumCartAmount;
     protected final DiscountType discountType;
     protected final double discountAmount;
 
-    protected Coupon(Double minimumCartAmount, DiscountType discountType, double discountAmount) {
+    protected Coupon(double minimumCartAmount, DiscountType discountType, double discountAmount) {
         this.minimumCartAmount = minimumCartAmount;
         this.discountType = discountType;
         this.discountAmount = discountAmount;

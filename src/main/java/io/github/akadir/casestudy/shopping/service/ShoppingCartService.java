@@ -1,5 +1,7 @@
 package io.github.akadir.casestudy.shopping.service;
 
+import io.github.akadir.casestudy.discount.campaign.base.Campaign;
+import io.github.akadir.casestudy.discount.coupon.base.Coupon;
 import io.github.akadir.casestudy.product.model.Product;
 
 import java.util.Map;
@@ -13,6 +15,14 @@ public interface ShoppingCartService {
     void removeProduct(Product product);
 
     void removeProduct(Product product, int amount);
+
+    boolean applyCoupon(Coupon coupon);
+
+    boolean applyCampaign(Campaign campaign);
+
+    double getCartPrice();
+
+    double getDiscounts();
 
     Map<Product, Integer> getProducts();
 }
