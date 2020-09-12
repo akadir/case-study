@@ -1,8 +1,8 @@
-package io.github.akadir.casestudy.shopping.handler;
+package io.github.akadir.casestudy.shopping.validator;
 
 import io.github.akadir.casestudy.product.Category;
 import io.github.akadir.casestudy.product.Product;
-import io.github.akadir.casestudy.shopping.handler.impl.ProductValidator;
+import io.github.akadir.casestudy.shopping.validator.impl.ProductValidator;
 import org.junit.Test;
 import org.mockito.Mockito;
 

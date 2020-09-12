@@ -1,4 +1,4 @@
-package io.github.akadir.casestudy.shopping.handler;
+package io.github.akadir.casestudy.shopping.validator;
 
 import io.github.akadir.casestudy.product.Product;
 

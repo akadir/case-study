@@ -1,9 +1,9 @@
 package io.github.akadir.casestudy.shopping.service.impl;
 
 import io.github.akadir.casestudy.product.Product;
-import io.github.akadir.casestudy.shopping.handler.CartEventValidator;
-import io.github.akadir.casestudy.shopping.handler.impl.AmountValidator;
-import io.github.akadir.casestudy.shopping.handler.impl.ProductValidator;
+import io.github.akadir.casestudy.shopping.validator.CartEventValidator;
+import io.github.akadir.casestudy.shopping.validator.impl.AmountValidator;
+import io.github.akadir.casestudy.shopping.validator.impl.ProductValidator;
 import io.github.akadir.casestudy.shopping.service.ShoppingCartService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
