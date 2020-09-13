@@ -36,6 +36,12 @@
       alt="build on windows" />
   </a>
   
+  <!-- Docker push -->
+  <a href="https://github.com/akadir/case-study/actions">
+   <img src="https://github.com/akadir/case-study/workflows/push%20docker%20image/badge.svg"
+     alt="Code Quality Check" />
+  </a>
+  
   <!-- Quality Gate Status -->
   <a href="https://sonarcloud.io/dashboard?id=akadir_case-study">
     <img src="https://sonarcloud.io/api/project_badges/measure?project=akadir_case-study&metric=alert_status"
@@ -67,4 +73,7 @@
  *  [logback](http://logback.qos.ch/) - Logging library that implements SLF4J API
  *  [mockito](https://site.mockito.org/) - Testing framework to mock objects.
  *  [AssertJ](https://joel-costigliola.github.io/assertj/) - Rich and easy to use test assertion library
+ *  [Docker](https://www.docker.com/) - Containerisation tool
+ *  [SonarCloud](https://sonarcloud.io/) - Online Code Quality & Security service
+ *  [GitHub Actions](https://github.com/features/actions) - Software workflow automation tool
  *  [gitignore.io](https://gitignore.io/) - Utility website to generate .gitignore files
