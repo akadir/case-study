@@ -2,7 +2,6 @@ package io.github.akadir.casestudy.shopping.model;
 
 import io.github.akadir.casestudy.product.model.Category;
 import io.github.akadir.casestudy.product.model.Product;
-import io.github.akadir.casestudy.shopping.service.model.ShoppingCart;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

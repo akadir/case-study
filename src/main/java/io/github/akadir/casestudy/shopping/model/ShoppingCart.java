@@ -1,4 +1,4 @@
-package io.github.akadir.casestudy.shopping.service.model;
+package io.github.akadir.casestudy.shopping.model;
 
 import io.github.akadir.casestudy.discount.campaign.base.Campaign;
 import io.github.akadir.casestudy.discount.coupon.base.Coupon;

@@ -4,7 +4,7 @@ import io.github.akadir.casestudy.discount.campaign.base.Campaign;
 import io.github.akadir.casestudy.discount.coupon.base.Coupon;
 import io.github.akadir.casestudy.product.model.Product;
 import io.github.akadir.casestudy.shopping.service.ShoppingCartService;
-import io.github.akadir.casestudy.shopping.service.model.ShoppingCart;
+import io.github.akadir.casestudy.shopping.model.ShoppingCart;
 import io.github.akadir.casestudy.shopping.validator.CartEventValidator;
 import io.github.akadir.casestudy.shopping.validator.impl.AmountValidator;
 import io.github.akadir.casestudy.shopping.validator.impl.ProductValidator;
