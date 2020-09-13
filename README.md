@@ -128,7 +128,7 @@ This may lead to a NullPointerException. To prevent this from occurring, [None](
 ## Pipeline Definitions
 
 All action logs can be seen from [this link](https://github.com/akadir/case-study/actions)
-and action definitions are in [this folder](./.github)
+and action definitions are in [this folder](./.github/workflows)
 
 - Every push that contains change in specific folders and/or files triggers two actions, build, and code quality.
     - Build Action builds source code on 3 different Operating Systems[Ubuntu, MacOS, Windows] using 3 different java versions[8, 11, 14].
