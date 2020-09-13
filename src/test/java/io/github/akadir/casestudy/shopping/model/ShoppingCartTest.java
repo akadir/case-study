@@ -1,5 +1,6 @@
 package io.github.akadir.casestudy.shopping.model;
 
+import io.github.akadir.casestudy.delivery.strategy.None;
 import io.github.akadir.casestudy.product.model.Category;
 import io.github.akadir.casestudy.product.model.Product;
 import org.junit.Test;
@@ -31,6 +32,10 @@ public class ShoppingCartTest {
         assertThat(shoppingCart.getDiscount())
                 .as("Cart discount should be zero")
                 .isZero();
+
+        assertThat(shoppingCart.getDeliveryStrategy())
+                .as("Cart initial delivery strategy should be None.class")
+                .isInstanceOf(None.class);
     }
 
 
@@ -62,5 +67,9 @@ public class ShoppingCartTest {
         assertThat(shoppingCart.getDiscount())
                 .as("Cart discount should be zero")
                 .isZero();
+
+        assertThat(shoppingCart.getDeliveryStrategy())
+                .as("Cart initial delivery strategy should be None.class")
+                .isInstanceOf(None.class);
     }
 }

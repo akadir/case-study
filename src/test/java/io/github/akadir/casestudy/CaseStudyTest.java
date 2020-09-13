@@ -11,4 +11,9 @@ public class CaseStudyTest {
                 .as("Crete CaseStudy should not throw exception")
                 .doesNotThrowAnyException();
     }
+
+    @Test(expected = Test.None.class)
+    public void whenMainMethodExecutedExpectNoExceptionThrown() {
+        CaseStudy.main(null);
+    }
 }
