@@ -13,26 +13,26 @@
   </a>
   
   <!-- Code Quality -->
-  <a href="https://github.com/akadir/github-actions/actions">
-    <img src="https://github.com/akadir/github-actions/workflows/check%20code%20quality/badge.svg"
+  <a href="https://github.com/akadir/case-study/actions">
+    <img src="https://github.com/akadir/case-study/workflows/check%20code%20quality/badge.svg"
       alt="Code Quality Check" />
   </a>
   
   <!-- macos -->
-  <a href="https://github.com/akadir/github-actions/actions">
-    <img src="https://github.com/akadir/github-actions/workflows/build%20on%20macos/badge.svg"
+  <a href="https://github.com/akadir/case-study/actions">
+    <img src="https://github.com/akadir/case-study/workflows/build%20on%20macos/badge.svg"
       alt="build on macos" />
   </a>
   
   <!-- ubuntu -->
-  <a href="https://github.com/akadir/github-actions/actions">
-    <img src="https://github.com/akadir/github-actions/workflows/build%20on%20ubuntu/badge.svg"
+  <a href="https://github.com/akadir/case-study/actions">
+    <img src="https://github.com/akadir/case-study/workflows/build%20on%20ubuntu/badge.svg"
       alt="build on ubuntu" />
   </a>
   
   <!-- windows -->
-  <a href="https://github.com/akadir/github-actions/actions">
-    <img src="https://github.com/akadir/github-actions/workflows/build%20on%20windows/badge.svg"
+  <a href="https://github.com/akadir/case-study/actions">
+    <img src="https://github.com/akadir/case-study/workflows/build%20on%20windows/badge.svg"
       alt="build on windows" />
   </a>
   
