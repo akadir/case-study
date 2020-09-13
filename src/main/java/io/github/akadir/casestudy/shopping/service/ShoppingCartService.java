@@ -3,6 +3,7 @@ package io.github.akadir.casestudy.shopping.service;
 import io.github.akadir.casestudy.discount.campaign.base.Campaign;
 import io.github.akadir.casestudy.discount.coupon.base.Coupon;
 import io.github.akadir.casestudy.product.model.Product;
+import io.github.akadir.casestudy.shopping.model.ShoppingCart;
 
 import java.util.Map;
 
@@ -23,6 +24,8 @@ public interface ShoppingCartService {
     double getCartPrice();
 
     double getDiscounts();
+
+    ShoppingCart getShoppingCart();
 
     Map<Product, Integer> getProducts();
 }
