@@ -18,7 +18,7 @@ jobs:
       - uses: actions/upload-artifact@master
         with:
           name: case-study-jar
-          path: target/case-study.jar
+          path: target/
 
   docker:
     name: Publish - Docker Hub
@@ -33,7 +33,7 @@ jobs:
       - uses: actions/download-artifact@master
         with:
           name: case-study-jar
-          path: target/case-study.jar
+          path: target/
       - name: Login to Docker Hub
         run: docker login -u $USER -p $PASS
       - name: Set APP_VERSION
